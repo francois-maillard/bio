@@ -1,0 +1,9 @@
+    <li>
+      <p>{{ specy.name }}</p>
+      <img src="{{ specy.image }}" alt="Image for {{ specy.name }}" />
+      <ul>
+{%- for source, link in specy.link.items() %}
+        <li><a href="{{ link }}">View on {{ source }}</a></li>
+{%- endfor %}
+      </ul>
+    </li>

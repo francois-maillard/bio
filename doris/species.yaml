@@ -1,0 +1,48 @@
+#################################################
+# Each element is a specy definition
+# Species can be identified by:
+# - the specy name (scientific)
+# - its ID on https://inpn.mnhn.fr (cd_nom in the url)
+# 
+# Example:
+# - inhm: 63607
+# - specy: Conger conger
+#
+#####################################################
+# The interface displays a link to doris.ffessm.fr
+# for further reading.
+#
+# If a mapping to doris.ffessm.fr exists in the INPN database, it is 
+# automatically discovered, if not, you can manually provide the doris
+# ID (the last digit in a specy webpage, such as:
+# https://doris.ffessm.fr/Especes/Apogon-imberbis-Apogon-1084, 1084 is 
+# the ID)
+#
+# Example:
+# - inhm: 63607
+#   doris: 169
+#
+####################################################################
+# Name:
+#
+# Sometimes, there's no vernacular (common) name on the INPN database.
+# In that case, you can force the name yourself:
+#
+# Example:
+# - name: Doris Dalmatienne
+#   inhm: 63607
+#
+####################################################################
+- specy: Conger conger
+- specy: Chromis chromis
+- name: Doris Dalmatienne
+  inhm: 63607
+  doris: 169 
+- inhm: 350678
+  doris: 333
+- inhm: 69830
+- inhm: 69706
+  doris: 101
+- inhm: 69841
+- inhm: 69391
+  doris: 1084

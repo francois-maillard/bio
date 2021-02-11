@@ -1,0 +1,9 @@
+*.swp
+*.pyc
+__pycache__/
+.cache/
+unittest.xml
+.coverage
+coverage.xml
+security-report.json
+typing.xml
