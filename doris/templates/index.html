@@ -1,7 +1,41 @@
-<html>
-  <ul>
-{%- for specy in species %}
-{% include('partials/specy.phtml') %}
-{%- endfor %}
-  </ul>
+<!doctype html>
+<html lang="en">
+  <head>
+{%- block header %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="/static/css/specy.css" rel="stylesheet">
+{%- endblock %}
+  </head>
+  <body>
+    <nav role="navigation" class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            {%- if page == "species" %}
+            <a class="nav-link active" href="#" aria-current="page">Espèces <span class="sr-only">(courant)</span></a>
+            {%- else %}
+            <a class="nav-link" href="/species">Espèces</a>
+            {%- endif %}
+          </li>
+        </ul>
+      </div>
+<!--
+      <div class="p-1 mr-3">
+        <a href="https://doris.ffessm.fr/" target="_blank">
+          <img src="/static/img/doris.png" class="d-inline-block align-bottom" alt="Doris" title="Aller sur Doris" height="50" loading="lazy"/>
+        </a>
+      </div>
+-->
+    </nav>
+    <div id="content" class="container" style="{% block container_style %}{% endblock %}">
+{%- block content %}{% endblock %}
+{%- block footer %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+{%- endblock %}
+  </body>
 </html>

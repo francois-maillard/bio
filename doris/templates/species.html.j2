@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% import("macros/specy.phtml.j2") as specy_macro %}
+{%- block content %}
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+{%- for specy in species.values() %}
+        <div class="col">
+          {{ specy_macro.show(specy) | indent(10) }}
+        </div>
+{%- endfor %}
+      </div>
+{%- endblock %}

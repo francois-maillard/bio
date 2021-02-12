@@ -1,0 +1,42 @@
+{% macro show(specy) -%}
+<div class="card" style="width: 24rem;">
+  <a href="/species/{{ specy.id }}">
+    <img src="{{ specy.thumbnail }}" class="card-img-top" alt="Image for {{ specy.name }}" />
+  </a>
+  <div class="card-body">
+    <h5 class="card-title">{{ specy.name }}</h5>
+{%- for source, link in specy.link.items() %}
+    <a href="{{ link }}" class="card-link">View on {{ source | replace('_', ' ') }}</a>
+{%- endfor %}
+  </div>
+</div>
+{%- endmacro %}
+
+{% macro details(specy) -%}
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{ specy.name }}</h5>
+    <p>{{ specy.names['scientificHtml'] }}</p>
+{%- for source, link in specy.link.items() %}
+    <a href="{{ link }}" class="card-link">View on {{ source | replace('_', ' ') }}</a>
+{%- endfor %}
+    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+{%- for photo in specy.photos %}
+        <div class="carousel-item {%- if loop.first %} active{% endif %}">
+          <img src="{{ photo }}" class="card-img-bottom d-block carousel-fill" alt="...">
+        </div>
+{%- endfor %}
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</div>
+{%- endmacro %}

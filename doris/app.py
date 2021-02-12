@@ -23,5 +23,14 @@ SPECIES = load_species(FILENAME)
 @app.route("/species")
 def list_species() -> str:
     """ Species page """
-    return render_template("index.html", page="species",
+    return render_template("species.html.j2", page="species",
                            species=SPECIES)
+
+
+@app.route("/species/<specy_id>")
+def get_specy(specy_id: int) -> str:
+    specy_id = int(specy_id)
+    if specy_id not in SPECIES:
+        abort(404)
+    return render_template("specy.html.j2", page="specy",
+                           specy=SPECIES[specy_id])

@@ -1,18 +1,28 @@
+""" Class definitions """
+from typing import Dict
+import logging
 import requests
-from typing import List
 import yaml
 
 
+# pylint: disable=too-many-instance-attributes
 class Specy:
-    def __init__(self, names, link, image, photos=None):
+    """ Represents a specy """
+    # pylint: disable=too-many-arguments
+    def __init__(self, specy_id, names, link, image, thumbnail, photos=None):
         self.__name = None
+        # pylint: disable=invalid-name
+        self.id = specy_id
         self.names = names
         self.link = link
         self.image = image
+        self.thumbnail = thumbnail
         self.photos = photos
+        logging.warning('Loaded %s (%s)', specy_id, self.name)
 
     @property
     def name(self):
+        """ Display the specie's name """
         if self.__name is not None:
             return self.__name
 
@@ -29,14 +39,17 @@ class Specy:
         self.__name = p_name
 
     def __str__(self):
-        return(self.names['scientific'])
+        """ String """
+        return self.names['scientific']
 
     def addlink(self, source, ref):
+        """ Manually add a link """
         if source == 'doris':
             self.link['doris'] = f'http://doris.ffessm.fr/ref/specie/{ref}'
 
     @classmethod
     def from_inpn(cls, ref):
+        """ Load from inpn api using their ID """
         url = f'https://odata-inpn.mnhn.fr/taxons/{ref}?embed=PHOTOS'
         resp = requests.get(url)
         resp.raise_for_status()
@@ -55,15 +68,19 @@ class Specy:
             if external['externalDbName'] == 'DORIS':
                 link['doris'] = external['url']
 
-        return cls(names=data['names'], link=link,
+        return cls(specy_id=ref,
+                   names=data['names'], link=link,
                    image=data['_links']['image']['href'],
+                   thumbnail=data['_links']['thumbnail']['href'],
                    photos=[photo['_links']['image']['href'] for photo in
                            data['_embedded']['photos']])
 
-
+    # pylint: disable=unused-argument
     @classmethod
     def from_name(cls, name):
-        url = f'https://inpn.mnhn.fr/inpn-web-services/especes/jdd/listEspece?idJdd=250&start=0&length=10&search%5Bvalue%5D={name}'
+        """ Search the specie's name on inpn and load """
+        url = 'https://inpn.mnhn.fr/inpn-web-services/especes/jdd/listEspece'
+        url = f'{url}?idJdd=250&start=0&length=10&search%5Bvalue%5D={name}'
         resp = requests.get(url)
         resp.raise_for_status()
         data = resp.json()['data']
@@ -73,9 +90,9 @@ class Specy:
         return cls.from_inpn(ref)
 
 
-
-def load_species(filename: str) -> List[Specy]:
-    species = []
+def load_species(filename: str) -> Dict[int, Specy]:
+    """ Load all species in the configuration file """
+    species = {}
     with open(filename, 'r') as stream:
         for data in yaml.safe_load(stream):
             if 'specy' in data:
@@ -87,5 +104,5 @@ def load_species(filename: str) -> List[Specy]:
                 specy.name = data['name']
             if 'doris' in data:
                 specy.addlink('doris', data['doris'])
-            species.append(specy)
+            species[specy.id] = specy
     return species
