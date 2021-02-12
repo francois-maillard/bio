@@ -1,0 +1,61 @@
+{% extends "index.html" %}
+{%- block container_style %}width: 48rem;{% endblock %}
+{%- block content %}
+{%- if message %}
+      <div class="alert alert-{{ message['level'] }}" role="alert">
+      {{ message['message'] }}
+      </div>
+{%- endif %}
+      <form>
+        <div class="mb-3">
+          <label for="inputSpecy" class="form-label">Nom de l'espèce</label>
+          <input type="text" class="form-control" id="inputSpecy"
+          placeholder="{% if specy %}{{ specy.names['binomial'] }}{% endif %}"
+          value="{% if data['specy'] %}{{ data['specy'] }}{% endif %}"
+          aria-describedby="specyHelp" name="specy">
+          <div id="specyHelp" class="form-text">Permet de trouver l'espèce via
+          son nom sur la
+          <a
+          href="https://inpn.mnhn.fr/accueil/recherche-de-donnees/especes">base
+          de donnée de l'INPN</a>.</div>
+        </div>
+        <div class="mb-3">
+          <label for="inputInhm" class="form-label">Identificat INHM</label>
+          <input type="text" class="form-control" id="inputInhm"
+          placeholder="{{ specy.id }}"
+          value="{% if data['inpn'] %}{{ data['inpn'] }}{% endif %}"
+          aria-describedby="inpnHelp" name="inpn">
+          <div id="inpnHelp" class="form-text">Permet de trouver l'espèce via
+          son identifiant sur la
+          <a
+          href="https://inpn.mnhn.fr/accueil/recherche-de-donnees/especes">base
+          de donnée de l'INPN</a>.</div>
+        </div>
+        <div class="mb-3">
+          <label for="inputDoris" class="form-label">Identifiant Doris</label>
+          <input type="text" class="form-control" id="inputDoris"
+          placeholder="{% if specy %}{{ specy.link['doris'] }}{%
+          endif %}"
+          value="{% if data['doris'] %}{{ data['doris'] }}{% endif %}"
+          aria-describedby="dorisHelp" name="doris">
+          <div id="dorisHelp" class="form-text">Identifiant
+          sur le <a href="https://doris.ffessm.fr/">site Doris</a>.</div>
+        </div>
+        <div class="mb-3">
+          <label for="inputName" class="form-label">Surcharger le nom</label>
+          <input type="text" class="form-control" id="inputName"
+          aria-describedby="nameHelp" name="name" placeholder="{% if specy
+          %}{{ specy.name }}{% endif %}"
+          value="{% if data['name'] %}{{
+          data['name'] }}{%
+          endif %}">
+          <div id="nameHelp" class="form-text">Si le nom trouvé sur le site de
+          l'INPN ne vous convient pas vous pouvez le surcharger.</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Chercher</button>
+{%- if data['inpn'] or data['specy'] %}
+        <button type="submit" class="btn btn-primary" name="create"
+        value="create">Enregistrer</button>
+{%- endif %}
+      </form>
+{%- endblock %}

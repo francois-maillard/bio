@@ -89,20 +89,43 @@ class Specy:
         ref = data[0]['CD_REF']
         return cls.from_inpn(ref)
 
+    @classmethod
+    def from_dict(cls, data):
+        """
+        Load specie according to a dict defition.
+        If the dict has:
+            - a `specy` key, then use `from_name()`
+            - no `specy` key, then use `from_inpn()`
+            - a `name` key, then override the default name
+            - a `doris` key, then add a link to that doris page
+        """
+        if 'specy' in data and data['specy']:
+            specy = Specy.from_name(data['specy'])
+        else:
+            specy = Specy.from_inpn(data['inpn'])
+
+        if 'name' in data and data['name']:
+            specy.name = data['name']
+        if 'doris' in data and data['doris']:
+            specy.addlink('doris', data['doris'])
+        return specy
+
 
 def load_species(filename: str) -> Dict[int, Specy]:
     """ Load all species in the configuration file """
     species = {}
     with open(filename, 'r') as stream:
         for data in yaml.safe_load(stream):
-            if 'specy' in data:
-                specy = Specy.from_name(data['specy'])
-            else:
-                specy = Specy.from_inpn(data['inhm'])
-
-            if 'name' in data:
-                specy.name = data['name']
-            if 'doris' in data:
-                specy.addlink('doris', data['doris'])
+            specy = Specy.from_dict(data)
             species[specy.id] = specy
     return species
+
+
+def save_specy(filename: str, data: dict) -> None:
+    """ Add the specy at the end of the file """
+    _data = {}
+    for key, value in data.items():
+        if value:
+            _data[key] = value
+    with open(filename, "a") as myfile:
+        myfile.write(yaml.safe_dump([_data]))

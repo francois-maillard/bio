@@ -5,7 +5,7 @@
 # - its ID on https://inpn.mnhn.fr (cd_nom in the url)
 # 
 # Example:
-# - inhm: 63607
+# - inpn: 63607
 # - specy: Conger conger
 #
 #####################################################
@@ -19,7 +19,7 @@
 # the ID)
 #
 # Example:
-# - inhm: 63607
+# - inpn: 63607
 #   doris: 169
 #
 ####################################################################
@@ -30,19 +30,19 @@
 #
 # Example:
 # - name: Doris Dalmatienne
-#   inhm: 63607
+#   inpn: 63607
 #
 ####################################################################
 - specy: Conger conger
 - specy: Chromis chromis
 - name: Doris Dalmatienne
-  inhm: 63607
+  inpn: 63607
   doris: 169 
-- inhm: 350678
+- inpn: 350678
   doris: 333
-- inhm: 69830
-- inhm: 69706
+- inpn: 69830
+- inpn: 69706
   doris: 101
-- inhm: 69841
-- inhm: 69391
+- inpn: 69841
+- inpn: 69391
   doris: 1084

@@ -38,6 +38,22 @@ def test_specy_from_name():
     assert specy.names['binomial'] == 'Conger conger'
 
 
+def test_specy_from_dict():
+    specy = Specy.from_dict({'specy': 'Conger'})
+    assert specy.names['binomial'] == 'Conger conger'
+
+    CD_REF = 63607
+    specy = Specy.from_dict({'inpn': CD_REF})
+    assert specy.name == 'Peltodoris atromaculata'
+    assert 'doris' not in specy.link
+
+    specy = Specy.from_dict({'inpn': CD_REF, 'name': 'Doris dalmatienne'})
+    assert specy.name == 'Doris dalmatienne'
+
+    specy = Specy.from_dict({'inpn': CD_REF, 'doris': 169})
+    assert specy.link['doris'] == 'http://doris.ffessm.fr/ref/specie/169'
+
+
 def test_load_species():
     species = load_species(os.path.join(TEST_ROOT, 'species.yaml'))
     assert len(species) == 4
