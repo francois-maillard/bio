@@ -42,6 +42,7 @@ def create_specy() -> str:
     data = {}
     message = {}
     created = False
+    specy = None
 
     data['specy'] = request.args.get('specy', None)
     data['inpn'] = request.args.get('inpn', None)
@@ -56,7 +57,15 @@ def create_specy() -> str:
         created = True
 
     if data['specy'] or data['inpn']:
-        specy = Specy.from_dict(data)
+        try:
+            specy = Specy.from_dict(data)
+        except KeyError as exc:
+            message = {'level': 'danger',
+                       'message': f'{exc.__class__.__name__}: {str(exc)}'}
+        except AssertionError:
+            message = {'level': 'danger', 'message': 'Non trouvé'}
+
+    if specy:
         if specy.id in SPECIES:
             message = {'level': 'danger',
                        'message': f'{specy.name} existe déjà'}
