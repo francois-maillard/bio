@@ -1,5 +1,5 @@
 import os
-from doris.doris import Specy, Doris, load_species
+from doris.doris import Specy, load_species
 
 TEST_ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -11,7 +11,8 @@ def test_specy_from_inpn():
     assert specy.names['vernacular']['fr'] == 'Congre d’Europe'
     assert specy.image == 'https://odata-inpn.mnhn.fr/photos/images/2/266442.jpg'
     assert specy.photos[0] == 'https://odata-inpn.mnhn.fr/photos/images/2/266442.jpg'
-    assert specy.link['inpn'] == 'https://odata-inpn.mnhn.fr/taxons/66921?embed=PHOTOS'
+    assert specy.link['inpn_api'] == 'https://odata-inpn.mnhn.fr/taxons/66921?embed=PHOTOS'
+    assert specy.link['inpn'] == 'https://inpn.mnhn.fr/espece/cd_nom/66921'
     assert specy.link['doris'] == 'http://doris.ffessm.fr/ref/specie/610'
 
 
@@ -38,6 +39,6 @@ def test_specy_from_name():
 
 def test_load_species():
     species = load_species(os.path.join(TEST_ROOT, 'species.yaml'))
-    assert len(species) == 4
+    assert len(species) == 5
     assert species[0].names['binomial'] == 'Conger conger'
     assert species[2].link['doris'] == 'http://doris.ffessm.fr/ref/specie/169'

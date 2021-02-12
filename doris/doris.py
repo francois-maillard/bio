@@ -41,7 +41,10 @@ class Specy:
         resp = requests.get(url)
         resp.raise_for_status()
         data = resp.json()
-        link = {'inpn': url}
+        link = {
+            'inpn_api': url,
+            'inpn': f'https://inpn.mnhn.fr/espece/cd_nom/{ref}'
+        }
 
         link_url = f'https://taxref.mnhn.fr/api/taxa/{ref}/externalIds'
 
