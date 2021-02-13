@@ -1,6 +1,8 @@
 import logging
 import os
 from flask import Flask, render_template, abort, request
+from flask_httpauth import HTTPBasicAuth
+from werkzeug.security import check_password_hash
 from .doris import Specy, load_species, save_specy
 
 logging.basicConfig(level=logging.INFO)
@@ -9,14 +11,24 @@ logging.basicConfig(level=logging.INFO)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 APP_STATIC = os.path.join(APP_ROOT, "static")
 APP_TPL = os.path.join(APP_ROOT, "templates")
+USERNAME = 'doris'
+PASSWORD = 'pbkdf2:sha256:150000$7tSG9wVB$6099ec2ffd43f16604f1e75ff497c826cc2548853b8f947eee4593ab81de9004'
 FILENAME = os.environ.get('CONFIG',
                           os.path.join(APP_ROOT, 'species.yaml'))
 
 # pylint: disable=invalid-name
 app = Flask(__name__)
+auth = HTTPBasicAuth()
 
 
 SPECIES = load_species(FILENAME)
+
+
+@auth.verify_password
+def verify_password(username: str, password: str) -> str:
+    if username == USERNAME and \
+           check_password_hash(PASSWORD, password):
+        return username
 
 
 @app.route("/")
@@ -37,6 +49,7 @@ def show_specy(specy_id: int) -> str:
 
 
 @app.route("/species/new")
+@auth.login_required
 def create_specy() -> str:
     global SPECIES
     data = {}
