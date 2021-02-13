@@ -28,8 +28,8 @@
           aria-describedby="inpnHelp" name="inpn">
           <div id="inpnHelp" class="form-text">Permet de trouver l'espèce via
           son identifiant sur la
-          <a
-          href="https://inpn.mnhn.fr/accueil/recherche-de-donnees/especes">base
+          <a target="blank"
+          href="{% if specy %}specy.link['inpn']{% else %}https://inpn.mnhn.fr/accueil/recherche-de-donnees/especes{% endif %}">base
           de donnée de l'INPN</a>.</div>
         </div>
         <div class="mb-3">
@@ -40,7 +40,7 @@
           value="{% if data['doris'] %}{{ data['doris'] }}{% endif %}"
           aria-describedby="dorisHelp" name="doris">
           <div id="dorisHelp" class="form-text">Identifiant
-          sur le <a href="https://doris.ffessm.fr/">site Doris</a>.</div>
+          sur le <a target="blank" href="{% if specy %}{{ specy.link['doris'] }}{% else %}https://doris.ffessm.fr/{% endif %}">site Doris</a>.</div>
         </div>
         <div class="mb-3">
           <label for="inputName" class="form-label">Surcharger le nom</label>

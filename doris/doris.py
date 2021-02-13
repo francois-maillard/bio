@@ -68,10 +68,18 @@ class Specy:
             if external['externalDbName'] == 'DORIS':
                 link['doris'] = external['url']
 
+        image = None
+        if 'image' in data['_links']:
+            image = data['_links']['image']['href']
+
+        thumbnail = None
+        if 'thumbnail' in data['_links']:
+            thumbnail = data['_links']['thumbnail']['href']
+
         return cls(specy_id=ref,
                    names=data['names'], link=link,
-                   image=data['_links']['image']['href'],
-                   thumbnail=data['_links']['thumbnail']['href'],
+                   image=image,
+                   thumbnail=thumbnail,
                    photos=[photo['_links']['image']['href'] for photo in
                            data['_embedded']['photos']])
 
