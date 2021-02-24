@@ -3,7 +3,7 @@ import os
 from flask import Flask, render_template, abort, request
 from flask_httpauth import HTTPBasicAuth
 from werkzeug.security import check_password_hash
-from .doris import Specy, load_species, save_specy
+from .doris import Specy, load_species, save_species
 
 logging.basicConfig(level=logging.INFO)
 
@@ -21,7 +21,7 @@ app = Flask(__name__)
 auth = HTTPBasicAuth()
 
 
-SPECIES = load_species(FILENAME)
+SPECIES = load_species(FILENAME, remote_load=False)
 
 
 @auth.verify_password
@@ -71,7 +71,7 @@ def create_specy() -> str:
 
     if data['specy'] or data['inpn']:
         try:
-            specy = Specy.from_dict(data)
+            specy = Specy.from_dict(data, remote_load=True)
         except KeyError as exc:
             message = {'level': 'danger',
                        'message': f'{exc.__class__.__name__}: {str(exc)}'}
@@ -84,10 +84,8 @@ def create_specy() -> str:
                        'message': f'{specy.name} existe déjà'}
         elif created:
             # Save
-            save_specy(FILENAME, data)
-
-            # Reload data
-            SPECIES = load_species(FILENAME)
+            SPECIES[specy.id] = specy
+            save_species(FILENAME, SPECIES)
 
             # Message
             message = {'level': 'success',

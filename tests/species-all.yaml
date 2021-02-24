@@ -1,0 +1,19 @@
+- id: 63607
+  image: https://odata-inpn.mnhn.fr/photos/images/1/243291.jpg
+  link:
+    doris: http://doris.ffessm.fr/ref/specie/169
+    inpn: https://inpn.mnhn.fr/espece/cd_nom/63607
+    inpn_api: https://odata-inpn.mnhn.fr/taxons/63607?embed=PHOTOS
+  name: Doris Dalmatienne
+  names:
+    binomial: Peltodoris atromaculata
+    scientific: Peltodoris atromaculata Bergh, 1880
+    scientificHtml: <i>Peltodoris atromaculata</i> Bergh, 1880
+    vernacular: {}
+  photos:
+  - https://odata-inpn.mnhn.fr/photos/images/9/243289.jpg
+  - https://odata-inpn.mnhn.fr/photos/images/1/243291.jpg
+  - https://odata-inpn.mnhn.fr/photos/images/0/243290.jpg
+  - https://odata-inpn.mnhn.fr/photos/images/5/120665.jpg
+  - https://odata-inpn.mnhn.fr/photos/images/5/143345.jpg
+  thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/1/243291.jpg

@@ -98,7 +98,7 @@ class Specy:
         return cls.from_inpn(ref)
 
     @classmethod
-    def from_dict(cls, data):
+    def from_dict(cls, data, remote_load=False):
         """
         Load specie according to a dict defition.
         If the dict has:
@@ -107,10 +107,22 @@ class Specy:
             - a `name` key, then override the default name
             - a `doris` key, then add a link to that doris page
         """
-        if 'specy' in data and data['specy']:
-            specy = Specy.from_name(data['specy'])
+        if remote_load:
+            if 'specy' in data and data['specy']:
+                specy = Specy.from_name(data['specy'])
+            else:
+                specy = Specy.from_inpn(data['inpn'])
         else:
-            specy = Specy.from_inpn(data['inpn'])
+            if 'photos' in data:
+                photos = data['photos']
+            else:
+                photos = None
+            specy = cls(specy_id=data['id'],
+                        names=data['names'],
+                        link=data['link'],
+                        image=data['image'],
+                        thumbnail=data['thumbnail'],
+                        photos=photos)
 
         if 'name' in data and data['name']:
             specy.name = data['name']
@@ -118,22 +130,26 @@ class Specy:
             specy.addlink('doris', data['doris'])
         return specy
 
+    def dump(self):
+        _dict = self.__dict__.copy()
+        if _dict['_Specy__name'] is not None:
+            _dict['name'] = _dict['_Specy__name']
+        del(_dict['_Specy__name'])
+        return _dict
 
-def load_species(filename: str) -> Dict[int, Specy]:
+
+def load_species(filename: str, remote_load=True) -> Dict[int, Specy]:
     """ Load all species in the configuration file """
     species = {}
     with open(filename, 'r') as stream:
         for data in yaml.safe_load(stream):
-            specy = Specy.from_dict(data)
+            specy = Specy.from_dict(data, remote_load=remote_load)
             species[specy.id] = specy
     return species
 
 
-def save_specy(filename: str, data: dict) -> None:
-    """ Add the specy at the end of the file """
-    _data = {}
-    for key, value in data.items():
-        if value:
-            _data[key] = value
-    with open(filename, "a") as myfile:
-        myfile.write(yaml.safe_dump([_data]))
+def save_species(filename: str, data: dict) -> None:
+    """ Save all species """
+    with open(filename, "w") as myfile:
+        for specy in data.values():
+            myfile.write(yaml.safe_dump([specy.dump()]))
