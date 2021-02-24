@@ -1,5 +1,6 @@
 import logging
 import os
+import random
 from flask import Flask, render_template, abort, request
 from flask_httpauth import HTTPBasicAuth
 from werkzeug.security import check_password_hash
@@ -37,6 +38,16 @@ def list_species() -> str:
     """ Species page """
     return render_template("species.html.j2", page="species",
                            species=SPECIES)
+
+
+@app.route("/species/random")
+def random_specy() -> str:
+    specy = random.choice(list(SPECIES.values()))
+    photo = random.choice(specy.photos)
+    return render_template("specy.html.j2", page="random",
+                           specy=specy,
+                           photo=photo,
+                           hidden=True)
 
 
 @app.route("/species/<specy_id>")

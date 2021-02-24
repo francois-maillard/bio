@@ -12,14 +12,22 @@
 </div>
 {%- endmacro %}
 
-{% macro details(specy) -%}
+{% macro details(specy, photo, hidden) -%}
 <div class="card mt-3">
   <div class="card-body">
-    <h5 class="card-title">{{ specy.name }}</h5>
-    <p>{{ specy.names['scientificHtml'] }}</p>
+{% if hidden | default(False) %}
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#info" aria-controls="info" aria-expanded="false" aria-label="Toggle info">Voir</button>
+{% endif %}
+    <div id="info" {% if hidden | default(False) %}class="collapse"{% endif %}>
+      <h5 class="card-title">{{ specy.name }}</h5>
+      <p>{{ specy.names['scientificHtml'] }}</p>
 {%- for source, link in specy.link.items() %}
-    <a href="{{ link }}" class="card-link">View on {{ source | replace('_', ' ') }}</a>
+      <a href="{{ link }}" class="card-link">View on {{ source | replace('_', ' ') }}</a>
 {%- endfor %}
+    </div>
+{% if photo | default(False) %}
+    <img src="{{ photo }}" class="card-img-bottom d-block w-100" alt="...">
+{% else %}
     <div id="carousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
 {%- for photo in specy.photos %}
@@ -37,6 +45,7 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
+{% endif %}
   </div>
 </div>
 {%- endmacro %}
