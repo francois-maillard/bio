@@ -46,16 +46,26 @@ class Specy:
     def add_link(self, source, ref):
         """ Manually add a link """
         if source == 'doris':
-            url = f'http://doris.ffessm.fr/ref/specie/{ref}'
-            self.link['doris'] = url
-            resp = requests.get(url)
+            self.link['doris'] = f'http://doris.ffessm.fr/ref/specie/{ref}'
+
+    def add_photos(self, src, url=None):
+        if src == 'doris':
+            resp = requests.get(self.link['doris'])
             soup = BeautifulSoup(resp.text, "html.parser")
 
             for div in soup.find_all("div", class_="imageInfoShell"):
+                if not div.img:
+                    continue
+
                 img = div.img['src']
                 if img.startswith('/'):
                     img = f'http://doris.ffessm.fr{img}'
                 self.photos.append({'url': img, 'src': 'doris'})
+
+            if len([photo for photo in self.photos if photo['src'] == 'doris']) == 0:
+                logging.warning('No picture found for %s', self.name)
+        else:
+            self.photos.append({'url': url, 'src': src})
 
     @classmethod
     def from_inpn(cls, ref):
@@ -136,8 +146,11 @@ class Specy:
 
         if 'name' in data and data['name']:
             specy.name = data['name']
+
         if 'doris' in data and data['doris']:
             specy.add_link('doris', data['doris'])
+            specy.add_photos('doris')
+
         return specy
 
     def dump(self):
