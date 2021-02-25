@@ -3,6 +3,7 @@ from typing import Dict
 import logging
 import requests
 import yaml
+from bs4 import BeautifulSoup
 
 
 # pylint: disable=too-many-instance-attributes
@@ -42,10 +43,19 @@ class Specy:
         """ String """
         return self.names['scientific']
 
-    def addlink(self, source, ref):
+    def add_link(self, source, ref):
         """ Manually add a link """
         if source == 'doris':
-            self.link['doris'] = f'http://doris.ffessm.fr/ref/specie/{ref}'
+            url = f'http://doris.ffessm.fr/ref/specie/{ref}'
+            self.link['doris'] = url
+            resp = requests.get(url)
+            soup = BeautifulSoup(resp.text, "html.parser")
+
+            for div in soup.find_all("div", class_="imageInfoShell"):
+                img = div.img['src']
+                if img.startswith('/'):
+                    img = f'http://doris.ffessm.fr{img}'
+                self.photos.append({'url': img, 'src': 'doris'})
 
     @classmethod
     def from_inpn(cls, ref):
@@ -80,8 +90,8 @@ class Specy:
                    names=data['names'], link=link,
                    image=image,
                    thumbnail=thumbnail,
-                   photos=[photo['_links']['image']['href'] for photo in
-                           data['_embedded']['photos']])
+                   photos=[{'url': photo['_links']['image']['href'], 'src': 'inpn'}
+                           for photo in data['_embedded']['photos']])
 
     # pylint: disable=unused-argument
     @classmethod
@@ -127,7 +137,7 @@ class Specy:
         if 'name' in data and data['name']:
             specy.name = data['name']
         if 'doris' in data and data['doris']:
-            specy.addlink('doris', data['doris'])
+            specy.add_link('doris', data['doris'])
         return specy
 
     def dump(self):

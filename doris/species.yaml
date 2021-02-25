@@ -12,11 +12,16 @@
       en: European conger, Conger Eel
       fr: "Congre d\u2019Europe"
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/2/266442.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/3/266443.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/4/266444.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/3/128703.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/6/120346.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/2/266442.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/3/266443.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/4/266444.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/3/128703.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/6/120346.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/2/266442.jpg
 - id: 69760
   image: https://odata-inpn.mnhn.fr/photos/images/3/268213.jpg
@@ -32,11 +37,16 @@
       en: Damselfish
       fr: Castagnole
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/2/268212.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/4/268214.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/3/268213.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/2/139792.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/0/143210.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/2/268212.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/4/268214.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/3/268213.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/2/139792.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/0/143210.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/3/268213.jpg
 - id: 63607
   image: https://odata-inpn.mnhn.fr/photos/images/1/243291.jpg
@@ -51,11 +61,16 @@
     scientificHtml: <i>Peltodoris atromaculata</i> Bergh, 1880
     vernacular: {}
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/9/243289.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/0/243290.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/1/243291.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/5/120665.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/5/143345.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/9/243289.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/0/243290.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/1/243291.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/5/120665.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/5/143345.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/1/243291.jpg
 - id: 350678
   image: https://odata-inpn.mnhn.fr/photos/images/7/135117.jpg
@@ -72,7 +87,8 @@
       fr: "Dromie (La), Crabe dormeur (Le), Crabe \xE0 b\xE9r\xEAt (Le), Dormeuse\
         \ (La), Dromie velue (La)"
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/7/135117.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/7/135117.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/7/135117.jpg
 - id: 69830
   image: https://odata-inpn.mnhn.fr/photos/images/8/268218.jpg
@@ -88,11 +104,16 @@
       en: Rainbow wrasse, Mediterranean Rainbow Wrasse
       fr: Girelle
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/8/268218.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/7/268217.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/6/268216.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/5/132605.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/1/139521.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/8/268218.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/7/268217.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/6/268216.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/5/132605.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/1/139521.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/8/268218.jpg
 - id: 69706
   image: https://odata-inpn.mnhn.fr/photos/images/5/218775.jpg
@@ -108,7 +129,8 @@
       en: Brown Meagre
       fr: Corb, Corb noir, Corb commun
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/5/218775.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/5/218775.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/5/218775.jpg
 - id: 69841
   image: https://odata-inpn.mnhn.fr/photos/images/2/141012.jpg
@@ -116,6 +138,7 @@
     doris: http://doris.ffessm.fr/ref/specie/162
     inpn: https://inpn.mnhn.fr/espece/cd_nom/69841
     inpn_api: https://odata-inpn.mnhn.fr/taxons/69841?embed=PHOTOS
+  name: Labre
   names:
     binomial: Labrus merula
     scientific: Labrus merula Linnaeus, 1758
@@ -124,8 +147,10 @@
       en: Brown wrasse
       fr: Merle
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/2/141012.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/3/141013.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/2/141012.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/3/141013.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/2/141012.jpg
 - id: 69391
   image: https://odata-inpn.mnhn.fr/photos/images/9/268209.jpg
@@ -141,9 +166,12 @@
       en: Cardinalfish
       fr: Apogon coq, Castagnole rouge
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/9/268209.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/5/135155.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/1/123621.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/9/268209.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/5/135155.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/1/123621.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/9/268209.jpg
 - id: 66863
   image: https://odata-inpn.mnhn.fr/photos/images/3/120593.jpg
@@ -158,9 +186,12 @@
       en: Mediterranean moray, Moray Eel
       fr: "Mur\xE8ne de M\xE9diterran\xE9e"
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/3/120593.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/9/135129.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/7/143307.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/3/120593.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/9/135129.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/7/143307.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/3/120593.jpg
 - id: 6914
   image: https://odata-inpn.mnhn.fr/photos/images/3/243093.jpg
@@ -176,11 +207,16 @@
     vernacular:
       en: Light Bulb Tunicate
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/3/243093.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/0/272240.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/4/243094.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/2/243092.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/9/157799.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/3/243093.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/0/272240.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/4/243094.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/2/243092.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/9/157799.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/3/243093.jpg
 - id: 7459
   image: https://odata-inpn.mnhn.fr/photos/images/4/243114.jpg
@@ -195,11 +231,16 @@
     scientificHtml: <i>Cerianthus membranaceus</i> (Spallanzani, 1784)
     vernacular: {}
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/5/272235.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/4/243114.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/0/304800.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/0/143200.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/9/143199.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/5/272235.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/4/243114.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/0/304800.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/0/143200.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/9/143199.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/4/243114.jpg
 - id: 373162
   image: https://odata-inpn.mnhn.fr/photos/images/3/266493.jpg
@@ -215,11 +256,16 @@
     vernacular:
       en: Peacocks Tail
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/3/266493.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/2/135952.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/8/132828.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/7/137067.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/8/141018.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/3/266493.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/2/135952.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/8/132828.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/7/137067.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/8/141018.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/3/266493.jpg
 - id: 72605
   image: https://odata-inpn.mnhn.fr/photos/images/2/135902.jpg
@@ -233,9 +279,12 @@
     scientificHtml: <i>Codium bursa</i> (Olivi) C.Agardh, 1817
     vernacular: {}
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/2/135902.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/5/143215.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/6/224716.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/2/135902.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/5/143215.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/6/224716.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/2/135902.jpg
 - id: 372244
   image: https://odata-inpn.mnhn.fr/photos/images/1/272291.jpg
@@ -250,9 +299,12 @@
     scientificHtml: <i>Acetabularia acetabulum</i> (L.) P.C.Silva, 1952
     vernacular: {}
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/1/272291.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/3/120163.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/4/120164.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/1/272291.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/3/120163.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/4/120164.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/1/272291.jpg
 - id: 7488
   image: https://odata-inpn.mnhn.fr/photos/images/6/304776.jpg
@@ -268,11 +320,16 @@
     vernacular:
       en: Beadlet Anemone
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/6/304776.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/4/123644.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/2/132602.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/ant/91299.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/5/123645.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/6/304776.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/4/123644.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/2/132602.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/ant/91299.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/5/123645.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/6/304776.jpg
 - id: 359982
   image: https://odata-inpn.mnhn.fr/photos/images/9/304779.jpg
@@ -288,11 +345,16 @@
     vernacular:
       en: Snakelocks Anemone
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/2/266422.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/9/304779.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/9/318189.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/3/121763.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/0/128820.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/2/266422.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/9/304779.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/9/318189.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/3/121763.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/0/128820.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/9/304779.jpg
 - id: 360280
   image: https://odata-inpn.mnhn.fr/photos/images/9/275589.jpg
@@ -308,9 +370,12 @@
       en: Tooth Coral, Scarlet Coral
       fr: Dent de Cochon
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/9/275589.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/0/275590.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/6/143156.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/9/275589.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/0/275590.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/6/143156.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/9/275589.jpg
 - id: 359745
   image: https://odata-inpn.mnhn.fr/photos/images/9/243159.jpg
@@ -325,11 +390,16 @@
     scientificHtml: <i>Alcyonium coralloides</i> (Pallas, 1766)
     vernacular: {}
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/9/243159.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/9/243169.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/5/128705.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/1/130421.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/2/137062.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/9/243159.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/9/243169.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/5/128705.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/1/130421.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/2/137062.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/9/243159.jpg
 - id: 361538
   image: https://odata-inpn.mnhn.fr/photos/images/0/271930.jpg
@@ -344,11 +414,16 @@
     scientificHtml: <i>Eunicella cavolini</i> (Koch, 1887)
     vernacular: {}
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/9/271929.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/0/271930.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/1/271931.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/6/143236.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/5/143235.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/9/271929.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/0/271930.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/1/271931.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/6/143236.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/5/143235.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/0/271930.jpg
 - id: 7445
   image: https://odata-inpn.mnhn.fr/photos/images/5/243145.jpg
@@ -363,10 +438,14 @@
     vernacular:
       fr: Corail rouge
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/5/243145.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/6/243146.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/2/131102.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/2/132812.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/5/243145.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/6/243146.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/2/131102.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/2/132812.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/5/243145.jpg
 - id: 7470
   image: https://odata-inpn.mnhn.fr/photos/images/1/304861.jpg
@@ -382,11 +461,16 @@
     vernacular:
       en: Yellow Cluster Anemone
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/1/304861.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/4/243124.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/0/304860.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/7/243127.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/6/243126.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/1/304861.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/4/243124.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/0/304860.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/7/243127.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/6/243126.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/1/304861.jpg
 - id: 674883
   image: https://odata-inpn.mnhn.fr/photos/images/1/318131.jpg
@@ -401,11 +485,16 @@
     vernacular:
       fr: "Varech de Nolti, Zost\xE8re naine"
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/1/318131.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/9/215129.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/1/155661.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/0/215130.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/2/155662.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/1/318131.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/9/215129.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/1/155661.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/0/215130.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/2/155662.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/1/318131.jpg
 - id: 93774
   image: https://odata-inpn.mnhn.fr/photos/images/8/266448.jpg
@@ -420,9 +509,12 @@
     vernacular:
       fr: "Cymodoc\xE9e, Paille de mer"
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/8/266448.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/9/266449.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/5/135905.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/8/266448.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/9/266449.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/5/135905.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/8/266448.jpg
 - id: 130673
   image: https://odata-inpn.mnhn.fr/photos/images/2/266522.jpg
@@ -438,9 +530,12 @@
       en: Eelgrass
       fr: "Zost\xE8re maritime, Varech des bords de mer, Varech marin"
   photos:
-  - https://odata-inpn.mnhn.fr/photos/images/2/266522.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/0/155660.jpg
-  - https://odata-inpn.mnhn.fr/photos/images/7/179247.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/2/266522.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/0/155660.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/7/179247.jpg
   thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/2/266522.jpg
 - id: 372169
   image: null
@@ -456,3 +551,191 @@
     vernacular: {}
   photos: []
   thumbnail: null
+- id: 648
+  image: https://odata-inpn.mnhn.fr/photos/images/2/120752.jpg
+  link:
+    doris: http://doris.ffessm.fr/ref/specie/605
+    inpn: https://inpn.mnhn.fr/espece/cd_nom/648
+    inpn_api: https://odata-inpn.mnhn.fr/taxons/648?embed=PHOTOS
+  name: Sabelle
+  names:
+    binomial: Sabella pavonina
+    scientific: Sabella pavonina Savigny, 1822
+    scientificHtml: <i>Sabella pavonina</i> Savigny, 1822
+    vernacular:
+      en: Peacock Worm
+  photos:
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/2/120752.jpg
+  thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/2/120752.jpg
+- id: 363584
+  image: https://odata-inpn.mnhn.fr/photos/images/5/304875.jpg
+  link:
+    doris: http://doris.ffessm.fr/ref/specie/403
+    inpn: https://inpn.mnhn.fr/espece/cd_nom/363584
+    inpn_api: https://odata-inpn.mnhn.fr/taxons/363584?embed=PHOTOS
+  name: Spirographe
+  names:
+    binomial: Sabella spallanzanii
+    scientific: Sabella spallanzanii (Gmelin, 1791)
+    scientificHtml: <i>Sabella spallanzanii</i> (Gmelin, 1791)
+    vernacular: {}
+  photos:
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/5/304875.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/0/243030.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/3/272223.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/4/232494.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/4/157874.jpg
+  thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/5/304875.jpg
+- id: 365291
+  image: https://odata-inpn.mnhn.fr/photos/images/2/243032.jpg
+  link:
+    doris: http://doris.ffessm.fr/ref/specie/1425
+    inpn: https://inpn.mnhn.fr/espece/cd_nom/365291
+    inpn_api: https://odata-inpn.mnhn.fr/taxons/365291?embed=PHOTOS
+  name: Serpule
+  names:
+    binomial: Serpula vermicularis
+    scientific: Serpula vermicularis Linnaeus, 1767
+    scientificHtml: <i>Serpula vermicularis</i> Linnaeus, 1767
+    vernacular: {}
+  photos:
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/2/304882.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/4/243034.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/2/243032.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/3/243033.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/3/304883.jpg
+  thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/2/243032.jpg
+- id: 28473
+  image: https://odata-inpn.mnhn.fr/photos/images/0/143170.jpg
+  link:
+    doris: http://doris.ffessm.fr/ref/specie/473
+    inpn: https://inpn.mnhn.fr/espece/cd_nom/28473
+    inpn_api: https://odata-inpn.mnhn.fr/taxons/28473?embed=PHOTOS
+  name: Bonellie verte
+  names:
+    binomial: Bonellia viridis
+    scientific: Bonellia viridis Rolando, 1821
+    scientificHtml: <i>Bonellia viridis</i> Rolando, 1821
+    vernacular: {}
+  photos:
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/0/143170.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/9/143169.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/1/135121.jpg
+  thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/0/143170.jpg
+- id: 669250
+  image: https://odata-inpn.mnhn.fr/photos/images/0/135130.jpg
+  link:
+    doris: http://doris.ffessm.fr/ref/specie/258
+    inpn: https://inpn.mnhn.fr/espece/cd_nom/669250
+    inpn_api: https://odata-inpn.mnhn.fr/taxons/669250?embed=PHOTOS
+  names:
+    binomial: Dentex dentex
+    scientific: Dentex dentex (Linnaeus, 1758)
+    scientificHtml: <i>Dentex dentex</i> (Linnaeus, 1758)
+    vernacular:
+      en: Common dentex, Dentex
+      fr: Denti, Dente commun
+  photos:
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/0/135130.jpg
+  thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/0/135130.jpg
+- id: 69668
+  image: https://odata-inpn.mnhn.fr/photos/images/2/268242.jpg
+  link:
+    doris: http://doris.ffessm.fr/ref/specie/465
+    inpn: https://inpn.mnhn.fr/espece/cd_nom/69668
+    inpn_api: https://odata-inpn.mnhn.fr/taxons/69668?embed=PHOTOS
+  names:
+    binomial: Sparus aurata
+    scientific: Sparus aurata Linnaeus, 1758
+    scientificHtml: <i>Sparus aurata</i> Linnaeus, 1758
+    vernacular:
+      en: Gilthead seabream
+      fr: Dorade royale
+  photos:
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/2/268242.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/3/135123.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/5/143395.jpg
+  thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/2/268242.jpg
+- id: 69664
+  image: https://odata-inpn.mnhn.fr/photos/images/7/268237.jpg
+  link:
+    doris: http://doris.ffessm.fr/ref/specie/431
+    inpn: https://inpn.mnhn.fr/espece/cd_nom/69664
+    inpn_api: https://odata-inpn.mnhn.fr/taxons/69664?embed=PHOTOS
+  names:
+    binomial: Sarpa salpa
+    scientific: Sarpa salpa (Linnaeus, 1758)
+    scientificHtml: <i>Sarpa salpa</i> (Linnaeus, 1758)
+    vernacular:
+      en: Salema, Saupe
+      fr: Saupe
+  photos:
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/8/268238.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/7/268237.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/2/132822.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/4/139794.jpg
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/6/139796.jpg
+  thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/7/268237.jpg
+- id: 533630
+  image: https://odata-inpn.mnhn.fr/photos/images/7/147077.jpg
+  link:
+    doris: http://doris.ffessm.fr/ref/specie/2330
+    inpn: https://inpn.mnhn.fr/espece/cd_nom/533630
+    inpn_api: https://odata-inpn.mnhn.fr/taxons/533630?embed=PHOTOS
+  name: Barracuda
+  names:
+    binomial: Sphyraena barracuda
+    scientific: Sphyraena barracuda (Edwards, 1771)
+    scientificHtml: <i>Sphyraena barracuda</i> (Edwards, 1771)
+    vernacular:
+      en: Great barracuda
+      fr: "Barracuda, Brisure, B\xE8cune"
+  photos:
+  - src: inpn
+    url: https://odata-inpn.mnhn.fr/photos/images/7/147077.jpg
+  - src: doris
+    url: http://doris.ffessm.fr/var/doris/storage/images/images/belle-taille-27711/234697-1-fre-FR/sphyraena_barracuda-vl11_image1200.jpg
+  - src: doris
+    url: http://doris.ffessm.fr/var/doris/storage/images/images/solitaire-40146/334177-1-fre-FR/sphyraena_barracuda-slb011_image1200.jpg
+  - src: doris
+    url: http://doris.ffessm.fr/var/doris/storage/images/images/allure-generale-40147/334185-1-fre-FR/sphyraena_barracuda-slb21_image1200.jpg
+  - src: doris
+    url: http://doris.ffessm.fr/var/doris/storage/images/images/machoires-40148/334193-1-fre-FR/sphyraena_barracuda-dr11_image1200.jpg
+  - src: doris
+    url: http://doris.ffessm.fr/var/doris/storage/images/images/juvenile-35030/293249-1-fre-FR/sphyraena_barracuda_pb111_image1200.jpg
+  - src: doris
+    url: http://doris.ffessm.fr/var/doris/storage/images/images/jeune-40149/334201-1-fre-FR/sphyraena_barracuda-jms11_image1200.jpg
+  - src: doris
+    url: http://doris.ffessm.fr/var/doris/storage/images/images/large-repartition-40150/334209-1-fre-FR/sphyraena_barracuda-pg11_image1200.jpg
+  - src: doris
+    url: http://doris.ffessm.fr/var/doris/storage/images/images/camouflage-40151/334217-1-fre-FR/sphyraena_barracuda-slb31_image1200.jpg
+  - src: doris
+    url: http://doris.ffessm.fr/var/doris/storage/images/images/curieux-40152/334225-1-fre-FR/sphyraena_barracuda-yh11_image1200.jpg
+  - src: doris
+    url: http://doris.ffessm.fr/var/doris/storage/images/images/bien-francais-40153/334233-1-fre-FR/shyraena_barracuda-ft11_image1200.jpg
+  - src: doris
+    url: http://doris.ffessm.fr/var/doris/storage/images/images/nettoyage-40154/334241-1-fre-FR/sphyraena_barracuda-vm11_image1200.jpg
+  thumbnail: https://odata-inpn.mnhn.fr/photos/thumbnails/7/147077.jpg

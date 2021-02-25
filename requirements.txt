@@ -3,3 +3,4 @@ requests
 pyyaml
 Flask
 flask_httpauth
+beautifulsoup4

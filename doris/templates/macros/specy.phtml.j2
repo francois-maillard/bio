@@ -26,13 +26,13 @@
 {%- endfor %}
     </div>
 {% if photo | default(False) %}
-    <img src="{{ photo }}" class="card-img-bottom d-block w-100" alt="...">
+    <img src="{{ photo['url'] }}" class="card-img-bottom d-block w-100" alt="...">
 {% else %}
     <div id="carousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
 {%- for photo in specy.photos %}
         <div class="carousel-item {%- if loop.first %} active{% endif %}">
-          <img src="{{ photo }}" class="card-img-bottom d-block w-100" alt="...">
+          <img src="{{ photo['url'] }}" class="card-img-bottom d-block w-100" alt="...">
         </div>
 {%- endfor %}
       </div>
