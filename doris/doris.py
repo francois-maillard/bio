@@ -1,16 +1,49 @@
 """ Class definitions """
-from typing import Dict
+from typing import List, Tuple, Dict
 import logging
 import requests
 import yaml
 from bs4 import BeautifulSoup
 
 
+def name(taxon: Dict) -> str:
+    """
+    Return the common name for a taxon
+    @param taxon: the taxon, as a dict
+    @return: the name
+    """
+    _name = None
+    if 'vernacular' in taxon['names']:
+        if 'fr' in taxon['names']['vernacular']:
+            _name = taxon['names']['vernacular']['fr']
+        elif 'en' in taxon['names']['vernacular']:
+            _name = taxon['names']['vernacular']['en']
+
+    if _name is None:
+        _name = taxon['names']['binomial']
+
+    if isinstance(_name, str):
+        return _name
+    else:
+        return ', '.join(_name)
+
+
 # pylint: disable=too-many-instance-attributes
 class Specy:
     """ Represents a specy """
     # pylint: disable=too-many-arguments
-    def __init__(self, specy_id, names, link, image, thumbnail, photos=None):
+    def __init__(self, specy_id, names, link, image, thumbnail,
+                 taxonomy=None, photos=None):
+        """
+        the full taxonomy, ex 
+            dpomain Biota
+            kingdom Animaux
+            phylum Annélides, Vers annelés
+            class Vers annelés marins, Polychètes
+            order Sabellida
+            family calcareous tubeworms
+            genus Serpula
+        """
         self.__name = None
         # pylint: disable=invalid-name
         self.id = specy_id
@@ -18,22 +51,18 @@ class Specy:
         self.link = link
         self.image = image
         self.thumbnail = thumbnail
+        if taxonomy is None:
+            taxonomy = []
+        self.taxonomy = taxonomy
         self.photos = photos
         logging.warning('Loaded %s (%s)', specy_id, self.name)
 
     @property
     def name(self):
         """ Display the specie's name """
-        if self.__name is not None:
+        if self.__name:
             return self.__name
-
-        if 'vernacular' in self.names:
-            if 'fr' in self.names['vernacular']:
-                return self.names['vernacular']['fr']
-            if 'en' in self.names['vernacular']:
-                return self.names['vernacular']['en']
-
-        return self.names['binomial']
+        return name(self.__dict__)
 
     @name.setter
     def name(self, p_name):
@@ -54,16 +83,21 @@ class Specy:
             soup = BeautifulSoup(resp.text, "html.parser")
 
             for div in soup.find_all("div", class_="imageInfoShell"):
-                if not div.img:
-                    continue
-
-                img = div.img['src']
-                if img.startswith('/'):
-                    img = f'http://doris.ffessm.fr{img}'
-                self.photos.append({'url': img, 'src': 'doris'})
+                try:
+                    img = div.img['src']
+                    if img.startswith('/'):
+                        img = f'http://doris.ffessm.fr{img}'
+                    self.photos.append({'url': img, 'src': 'doris'})
+                except:
+                    pass
 
             if len([photo for photo in self.photos if photo['src'] == 'doris']) == 0:
                 logging.warning('No picture found for %s', self.name)
+            else:
+                if self.thumbnail is None:
+                    self.thumbnail = self.photos[0]['url']
+                if self.image is None:
+                    self.image = self.photos[0]['url']
         else:
             self.photos.append({'url': url, 'src': src})
 
@@ -96,10 +130,17 @@ class Specy:
         if 'thumbnail' in data['_links']:
             thumbnail = data['_links']['thumbnail']['href']
 
+        taxonomy_url = data['_links']['taxonomy']['href']
+        taxonomy_url = taxonomy_url.replace('{', '').replace('}', '')
+        resp = requests.get(taxonomy_url)
+        taxonomy = [(taxon['rank'].lower(), name(taxon))
+            for taxon in resp.json()['_embedded']['taxa']]
+
         return cls(specy_id=ref,
                    names=data['names'], link=link,
                    image=image,
                    thumbnail=thumbnail,
+                   taxonomy=taxonomy,
                    photos=[{'url': photo['_links']['image']['href'], 'src': 'inpn'}
                            for photo in data['_embedded']['photos']])
 
@@ -133,6 +174,10 @@ class Specy:
             else:
                 specy = Specy.from_inpn(data['inpn'])
         else:
+            if 'taxonomy' in data:
+                taxonomy = data['taxonomy']
+            else:
+                taxonomy = None
             if 'photos' in data:
                 photos = data['photos']
             else:
@@ -142,6 +187,7 @@ class Specy:
                         link=data['link'],
                         image=data['image'],
                         thumbnail=data['thumbnail'],
+                        taxonomy=taxonomy,
                         photos=photos)
 
         if 'name' in data and data['name']:

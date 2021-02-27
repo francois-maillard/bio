@@ -1,0 +1,5 @@
+- delete photo
+- select photo as image/thumbnail
+- delete specy
+- reload data
+- show the specy's page after creation, and the form below

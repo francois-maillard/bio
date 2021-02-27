@@ -16,34 +16,40 @@
 <div class="card mt-3">
   <div class="card-body">
 {% if hidden | default(False) %}
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#info" aria-controls="info" aria-expanded="false" aria-label="Toggle info">Voir</button>
+    <button class="btn btn-primary mb-2" type="button" data-toggle="collapse" data-target=".collapse-info" aria-controls="info" aria-expanded="false" aria-label="Toggle info">Voir</button>
 {% endif %}
-    <div id="info" {% if hidden | default(False) %}class="collapse"{% endif %}>
+    <div id="info" {% if hidden | default(False) %}class="collapse collapse-info"{% endif %}>
       <h5 class="card-title">{{ specy.name }}</h5>
       <p>{{ specy.names['scientificHtml'] }}</p>
+      <div>
+{%- for taxon in specy.taxonomy %}        <span>/ {{ taxon[1] }}</span>
+{%- endfor %}
+      </div>
 {%- for source, link in specy.link.items() %}
       <a href="{{ link }}" class="card-link">View on {{ source | replace('_', ' ') }}</a>
 {%- endfor %}
+      <div id="carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+  {%- for photo in specy.photos %}
+          <div class="carousel-item {%- if loop.first %} active{% endif %}">
+            <img src="{{ photo['url'] }}" class="card-img-bottom d-block w-100" alt="...">
+            <p>image issue de <a href="{{ specy.link[photo['src']] }}" class="card-link">{{ photo['src'] }}</a></p>
+          </div>
+  {%- endfor %}
+        </div>
+        <a class="carousel-control-prev" role="button" href="#carousel" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" role="button" href="#carousel" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
     </div>
 {% if photo | default(False) %}
-    <img src="{{ photo['url'] }}" class="card-img-bottom d-block w-100" alt="...">
-{% else %}
-    <div id="carousel" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-{%- for photo in specy.photos %}
-        <div class="carousel-item {%- if loop.first %} active{% endif %}">
-          <img src="{{ photo['url'] }}" class="card-img-bottom d-block w-100" alt="...">
-        </div>
-{%- endfor %}
-      </div>
-      <a class="carousel-control-prev" role="button" href="#carousel" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" role="button" href="#carousel" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+    <div class="collapse show collapse-info">
+      <img src="{{ photo['url'] }}" class="card-img-bottom d-block w-100" alt="...">
     </div>
 {% endif %}
   </div>
