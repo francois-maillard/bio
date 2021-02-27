@@ -67,6 +67,7 @@ def create_specy() -> str:
     message = {}
     created = False
     specy = None
+    new_specy = None
 
     data['specy'] = request.args.get('specy', None)
     data['inpn'] = request.args.get('inpn', None)
@@ -103,11 +104,14 @@ def create_specy() -> str:
                        'message': f'{specy.name} a été ajoutée'}
 
             # Reset form data
+            new_specy = specy
             specy = None
             data = {}
     else:
         specy = None
     return render_template("specy_create.html.j2",
-                           specy=specy, data=data,
+                           specy=specy,
+                           new_specy=new_specy,
+                           data=data,
                            message=message,
                            page="specy_create")

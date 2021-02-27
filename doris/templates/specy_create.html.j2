@@ -1,10 +1,15 @@
 {% extends "index.html" %}
+{% import("macros/specy.phtml.j2") as specy_macro %}
 {%- block container_style %}width: 48rem;{% endblock %}
 {%- block content %}
 {%- if message %}
       <div class="alert alert-{{ message['level'] }} alert-dismissible fade show" role="alert">
-      {{ message['message'] }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ message['message'] }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <hr>
+        {{ specy_macro.details(new_specy, None, False) | indent(8) }}
       </div>
 {%- endif %}
       <form>
