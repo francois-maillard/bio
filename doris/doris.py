@@ -133,7 +133,7 @@ class Specy:
         taxonomy_url = data['_links']['taxonomy']['href']
         taxonomy_url = taxonomy_url.replace('{', '').replace('}', '')
         resp = requests.get(taxonomy_url)
-        taxonomy = [(taxon['rank'].lower(), name(taxon))
+        taxonomy = [[taxon['rank'].lower(), name(taxon)]
             for taxon in resp.json()['_embedded']['taxa']]
 
         return cls(specy_id=ref,
