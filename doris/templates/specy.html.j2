@@ -1,6 +1,6 @@
 {% extends "index.html" %}
 {% import("macros/specy.phtml.j2") as specy_macro %}
-{%- block container_style %}width: 48rem;{% endblock %}
+{%- block container_style %}max-width: 48rem;{% endblock %}
 {%- block content %}
       {{ specy_macro.details(specy, photo, hidden) | indent(6) }}
 {%- endblock %}
