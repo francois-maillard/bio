@@ -13,6 +13,24 @@
 {%- endmacro %}
 
 {% macro details(specy, photo, hidden) -%}
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header flex-column">
+                <h5 class="modal-title">Are you sure?</h5>    
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Do you really want to delete <span id="deleteModalText">.</span>? This process cannot be undone.</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="deleteModalAction">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="card mt-3">
   <div class="card-body">
 {% if hidden | default(False) %}
@@ -20,10 +38,16 @@
 {% endif %}
     <div id="info" {% if hidden | default(False) %}class="collapse collapse-info"{% endif %}>
       <h5 class="card-title">{{ specy.name }}</h5>
+      <span data-toggle="modal" data-target="#deleteModal" data-delete-text="the {{ specy.name }} specy" data-delete-url="/species/{{ specy.id }}" class="float-right">
+        <button class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+      </span>
       <p>{{ specy.names['scientificHtml'] }}</p>
       <div>
-{%- for taxon in specy.taxonomy %}        <span>/ {{ taxon[1] }}</span>
+        <ol class="breadcrumb">
+{%- for taxon in specy.taxonomy %}
+          <li class="breadcrumb-item">{{ taxon[1] }}</li>
 {%- endfor %}
+        </ol>
       </div>
 {%- for source, link in specy.link.items() %}
       <a href="{{ link }}" class="card-link">View on {{ source | replace('_', ' ') }}</a>
