@@ -50,7 +50,18 @@ def random_specy() -> str:
                            hidden=True)
 
 
-@app.route("/species/<specy_id>")
+@app.route("/species/<specy_id>", methods=['DELETE'])
+@auth.login_required
+def delete_specy(specy_id: int) -> str:
+    specy_id = int(specy_id)
+    if specy_id not in SPECIES:
+        abort(404)
+    del SPECIES[specy_id]
+    save_species(FILENAME, SPECIES)
+    return '', 204
+  
+
+@app.route("/species/<specy_id>", methods=['GET'])
 def show_specy(specy_id: int) -> str:
     specy_id = int(specy_id)
     if specy_id not in SPECIES:
