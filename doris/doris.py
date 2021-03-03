@@ -173,6 +173,13 @@ class Specy:
                 specy = Specy.from_name(data['specy'])
             else:
                 specy = Specy.from_inpn(data['inpn'])
+
+            if 'doris' in data and data['doris']:
+                specy.add_link('doris', data['doris'])
+
+            # Load additional photos from the doris website
+            if 'doris' in specy.link:
+                specy.add_photos('doris')
         else:
             if 'taxonomy' in data:
                 taxonomy = data['taxonomy']
@@ -192,12 +199,6 @@ class Specy:
 
         if 'name' in data and data['name']:
             specy.name = data['name']
-
-        if 'doris' in data and data['doris']:
-            specy.add_link('doris', data['doris'])
-            
-        if 'doris' in specy.link:
-            specy.add_photos('doris')
 
         return specy
 
