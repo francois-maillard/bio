@@ -195,6 +195,8 @@ class Specy:
 
         if 'doris' in data and data['doris']:
             specy.add_link('doris', data['doris'])
+            
+        if 'doris' in specy.link:
             specy.add_photos('doris')
 
         return specy
