@@ -66,6 +66,18 @@
           <div class="carousel-item {%- if loop.first %} active{% endif %}">
             <img src="{{ photo['url'] }}" class="card-img-bottom d-block w-100" alt="...">
             <p>image issue de <a href="{{ specy.link[photo['src']] }}" class="card-link">{{ photo['src'] }}</a></p>
+{%- if request.authorization and 'username' in request.authorization %}
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <span data-toggle="modal" data-target="#deleteModal" data-delete-text="the current photo" data-delete-url="/species/{{ specy.id }}/photo/{{ photo['id'] }}">
+                  <button class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Delete the photo"><i class="fa fa-trash"></i></button>
+                </span>
+              </li>
+              <li class="list-inline-item">
+                <button id="thumbnail" class="btn btn-primary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Use as thumbnail" data-url="/species/{{ specy.id }}/thumbnail" data-photo-id="{{ photo['id'] }}"><i class="fa fa-image"></i></button>
+              </li>
+            </ul>
+{%- endif %}
           </div>
   {%- endfor %}
         </div>
