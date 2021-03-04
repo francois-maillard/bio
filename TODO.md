@@ -1,3 +1,3 @@
-- delete photo
-- select photo as image/thumbnail
+- when deleting a photo, reload to the current page instead of the home
+- cannot reuse several times the same message box (for deletion, creation)
 - reload data

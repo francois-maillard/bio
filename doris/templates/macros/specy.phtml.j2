@@ -45,7 +45,7 @@
     <div id="info" {% if hidden | default(False) %}class="collapse collapse-info"{% endif %}>
       <h5 class="card-title">{{ specy.name }}</h5>
 {%- if request.authorization and 'username' in request.authorization %}
-      <span data-toggle="modal" data-target="#deleteModal" data-delete-text="the {{ specy.name }} specy" data-delete-url="/species/{{ specy.id }}" class="float-right">
+      <span data-toggle="modal" data-target="#deleteModal" data-delete-text="the {{ specy.name }} specy" data-delete-url="/species/{{ specy.id }}" data-reload-url="/" class="float-right">
         <button class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Delete the specy"><i class="fa fa-trash"></i></button>
       </span>
 {%- endif %}
@@ -69,12 +69,12 @@
 {%- if request.authorization and 'username' in request.authorization %}
             <ul class="list-inline">
               <li class="list-inline-item">
-                <span data-toggle="modal" data-target="#deleteModal" data-delete-text="the current photo" data-delete-url="/species/{{ specy.id }}/photo/{{ photo['id'] }}">
+                <span data-toggle="modal" data-target="#deleteModal" data-delete-text="the current photo" data-delete-url="/species/{{ specy.id }}/photos/{{ loop.index - 1 }}" data-reload-url="/species/{{ specy.id }}">
                   <button class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Delete the photo"><i class="fa fa-trash"></i></button>
                 </span>
               </li>
               <li class="list-inline-item">
-                <button id="thumbnail" class="btn btn-primary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Use as thumbnail" data-url="/species/{{ specy.id }}/thumbnail" data-photo-id="{{ photo['id'] }}"><i class="fa fa-image"></i></button>
+                <button class="btn btn-primary btn-sm btn-thumbnail" type="button" data-toggle="tooltip" data-placement="top" title="Use as thumbnail" data-url="/species/{{ specy.id }}/thumbnail" data-photo-id="{{ loop.index - 1 }}"><i class="fa fa-image"></i></button>
               </li>
             </ul>
 {%- endif %}

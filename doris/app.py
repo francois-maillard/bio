@@ -70,6 +70,39 @@ def show_specy(specy_id: int) -> str:
                            specy=SPECIES[specy_id])
 
 
+@app.route("/species/<specy_id>/photos/<photo_id>", methods=['DELETE'])
+def delete_photo(specy_id: int, photo_id: int) -> str:
+    specy_id = int(specy_id)
+    if specy_id not in SPECIES:
+        abort(404)
+    specy = SPECIES[specy_id]
+
+    photo_id = int(photo_id)
+    if photo_id > len(specy.photos) - 1 or photo_id < 0:
+        abort(404)
+
+    del specy.photos[photo_id]
+    save_species(FILENAME, SPECIES)
+    return '{}', 201
+
+
+@app.route("/species/<specy_id>/thumbnail", methods=['POST'])
+def specy_thumbnail(specy_id: int) -> str:
+    specy_id = int(specy_id)
+    if specy_id not in SPECIES:
+        abort(404)
+    specy = SPECIES[specy_id]
+
+    photo_id = int(request.json.get('photo_id'))
+    if photo_id > len(specy.photos) - 1 or photo_id < 0:
+        abort(404)
+
+    specy.thumbnail = specy.photos[photo_id]['url']
+    specy.image = specy.photos[photo_id]['url']
+    save_species(FILENAME, SPECIES)
+    return '{}', 201
+
+
 @app.route("/species/new")
 @auth.login_required
 def create_specy() -> str:

@@ -7,7 +7,7 @@ $('#deleteModal').on('show.bs.modal', function (event) {
       url: button.data('delete-url'),
       type: 'DELETE',
       success: function(result) {
-        window.location.replace('/')
+        window.location.replace(button.data('reload-url'))
       },
       error: function(result, error, status) {
         deleteModal.modal('hide')
@@ -20,4 +20,29 @@ $('#deleteModal').on('show.bs.modal', function (event) {
     });
   })
   $('#deleteModalText').text(button.data('delete-text'))
+})
+
+$('.btn-thumbnail').on('click', function(event) {
+  var button = $(this) // Button that triggered the modal
+  $.ajax({
+    url: button.data('url'),
+    type: 'POST',
+    dataType: "json",
+    data: JSON.stringify({'photo_id': button.data('photo-id')}),
+    contentType: "application/json; charset=utf-8",
+    success: function(result) {
+      var confirmModal = $('#confirmModal')
+      confirmModal.addClass('alert-success')
+      confirmModal.find('p').text('Thumbnail updated')
+      confirmModal.addClass('show')
+      confirmModal.alert()
+    },
+    error: function(result, error, status) {
+      var confirmModal = $('#confirmModal')
+      confirmModal.addClass('alert-danger')
+      confirmModal.find('p').text('Failed: ' + status)
+      confirmModal.addClass('show')
+      confirmModal.alert()
+    }
+  });
 })
