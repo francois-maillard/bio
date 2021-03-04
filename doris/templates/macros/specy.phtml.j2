@@ -39,14 +39,16 @@
 
 <div class="card mt-3">
   <div class="card-body">
-{% if hidden | default(False) %}
+{%- if hidden | default(False) %}
     <button class="btn btn-primary mb-2" type="button" data-toggle="collapse" data-target=".collapse-info" aria-controls="info" aria-expanded="false" aria-label="Toggle info">Voir</button>
-{% endif %}
+{%- endif %}
     <div id="info" {% if hidden | default(False) %}class="collapse collapse-info"{% endif %}>
       <h5 class="card-title">{{ specy.name }}</h5>
+{%- if request.authorization and 'username' in request.authorization %}
       <span data-toggle="modal" data-target="#deleteModal" data-delete-text="the {{ specy.name }} specy" data-delete-url="/species/{{ specy.id }}" class="float-right">
-        <button class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+        <button class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Delete the specy"><i class="fa fa-trash"></i></button>
       </span>
+{%- endif %}
       <p>{{ specy.names['scientificHtml'] }}</p>
       <div>
         <ol class="breadcrumb">
@@ -77,11 +79,11 @@
         </a>
       </div>
     </div>
-{% if photo | default(False) %}
+{%- if photo | default(False) %}
     <div class="collapse show collapse-info">
       <img src="{{ photo['url'] }}" class="card-img-bottom d-block w-100" alt="...">
     </div>
-{% endif %}
+{%- endif %}
   </div>
 </div>
 {%- endmacro %}

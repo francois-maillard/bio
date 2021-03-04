@@ -14,6 +14,7 @@ $('#deleteModal').on('show.bs.modal', function (event) {
         var confirmModal = $('#confirmModal')
         confirmModal.addClass('alert-danger')
         confirmModal.find('p').text('Failed: ' + status)
+        confirmModal.addClass('show')
         confirmModal.alert()
       }
     });
