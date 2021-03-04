@@ -1,10 +1,22 @@
 $('#deleteModal').on('show.bs.modal', function (event) {
+  var deleteModal = $('#deleteModal')
   var button = $(event.relatedTarget) // Button that triggered the modal
   var recipient = button.data('r') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content.
   $('#deleteModalAction').on('click', function(event) {
-    alert('delete ' + button.data('delete-url'))
+    $.ajax({
+      url: button.data('delete-url'),
+      type: 'DELETE',
+      success: function(result) {
+        window.location.replace('/')
+      },
+      error: function(result, error, status) {
+        deleteModal.modal('hide')
+        var confirmModal = $('#confirmModal')
+        confirmModal.addClass('alert-danger')
+        confirmModal.find('p').text('Failed: ' + status)
+        confirmModal.alert()
+      }
+    });
   })
   $('#deleteModalText').text(button.data('delete-text'))
 })
