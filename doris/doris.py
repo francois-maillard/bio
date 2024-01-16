@@ -104,45 +104,111 @@ class Specy:
     @classmethod
     def from_inpn(cls, ref):
         """ Load from inpn api using their ID """
-        url = f'https://odata-inpn.mnhn.fr/taxons/{ref}?embed=PHOTOS'
+        url = f'https://taxref.mnhn.fr/api/taxa/{ref}'
         resp = requests.get(url)
         resp.raise_for_status()
         data = resp.json()
         link = {
             'inpn_api': url,
-            'inpn': f'https://inpn.mnhn.fr/espece/cd_nom/{ref}'
+            'inpn': data['_links']['inpnWebpage']['href']
         }
 
-        link_url = f'https://taxref.mnhn.fr/api/taxa/{ref}/externalIds'
-
-        resp = requests.get(link_url)
+        inpn_external_urls = data['_links']['externalIds']['href']
+        resp = requests.get(inpn_external_urls)
         resp.raise_for_status()
         link_data = resp.json()
         for external in link_data['_embedded']['externalDb']:
             if external['externalDbName'] == 'DORIS':
                 link['doris'] = external['url']
 
+        inpn_media_urls = data['_links']['media']['href']
+        resp = requests.get(inpn_media_urls)
+        resp.raise_for_status()
+        media_data = resp.json()
         image = None
-        if 'image' in data['_links']:
-            image = data['_links']['image']['href']
-
         thumbnail = None
-        if 'thumbnail' in data['_links']:
-            thumbnail = data['_links']['thumbnail']['href']
+        photos = []
+        for media in media_data['_embedded']['media']:
+            if 'image' not in media['mimeType']:
+                continue
 
-        taxonomy_url = data['_links']['taxonomy']['href']
-        taxonomy_url = taxonomy_url.replace('{', '').replace('}', '')
-        resp = requests.get(taxonomy_url)
-        taxonomy = [[taxon['rank'].lower(), name(taxon)]
-            for taxon in resp.json()['_embedded']['taxa']]
+            if image is None:
+                image = media['_links']['file']['href']
+
+            if thumbnail is None:
+                thumbnail = media['_links']['thumbnailFile']['href']
+
+            photos.append({'url': media['_links']['file']['href'], 'src': 'inpn'})
+
+        taxonomy = [
+            ['domain', data['rankName']],
+            ['kingdom', data['kingdomName']],
+            ['phylum', data['phylumName']],
+            ['class', data['className']],
+            ['order', data['orderName']],
+            ['family', data['familyName']],
+            ['genus', data['genusName']]
+        ]
+
+        names = {
+            'binomial': data["scientificName"],
+            'scientific': data["referenceName"],
+            'scientificHtml': data["referenceNameHtml"],
+            'vernacular': {
+                'fr': data["frenchVernacularName"],
+                'en': data["englishVernacularName"]
+            }
+        }
 
         return cls(specy_id=ref,
-                   names=data['names'], link=link,
+                   names=names, link=link,
                    image=image,
                    thumbnail=thumbnail,
                    taxonomy=taxonomy,
-                   photos=[{'url': photo['_links']['image']['href'], 'src': 'inpn'}
-                           for photo in data['_embedded']['photos']])
+                   photos=photos)
+
+#    @classmethod
+#    def from_inpn(cls, ref):
+#        """ Load from inpn api using their ID """
+#        url = f'https://odata-inpn.mnhn.fr/taxons/{ref}?embed=PHOTOS'
+#        resp = requests.get(url)
+#        resp.raise_for_status()
+#        data = resp.json()
+#        link = {
+#            'inpn_api': url,
+#            'inpn': f'https://inpn.mnhn.fr/espece/cd_nom/{ref}'
+#        }
+#
+#        link_url = f'https://taxref.mnhn.fr/api/taxa/{ref}/externalIds'
+#
+#        resp = requests.get(link_url)
+#        resp.raise_for_status()
+#        link_data = resp.json()
+#        for external in link_data['_embedded']['externalDb']:
+#            if external['externalDbName'] == 'DORIS':
+#                link['doris'] = external['url']
+#
+#        image = None
+#        if 'image' in data['_links']:
+#            image = data['_links']['image']['href']
+#
+#        thumbnail = None
+#        if 'thumbnail' in data['_links']:
+#            thumbnail = data['_links']['thumbnail']['href']
+#
+#        taxonomy_url = data['_links']['taxonomy']['href']
+#        taxonomy_url = taxonomy_url.replace('{', '').replace('}', '')
+#        resp = requests.get(taxonomy_url)
+#        taxonomy = [[taxon['rank'].lower(), name(taxon)]
+#            for taxon in resp.json()['_embedded']['taxa']]
+#
+#        return cls(specy_id=ref,
+#                   names=data['names'], link=link,
+#                   image=image,
+#                   thumbnail=thumbnail,
+#                   taxonomy=taxonomy,
+#                   photos=[{'url': photo['_links']['image']['href'], 'src': 'inpn'}
+#                           for photo in data['_embedded']['photos']])
 
     # pylint: disable=unused-argument
     @classmethod
