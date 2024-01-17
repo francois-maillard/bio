@@ -57,15 +57,21 @@
 {%- endfor %}
         </ol>
       </div>
+    </div>
+    <div>
 {%- for source, link in specy.link.items() %}
       <a href="{{ link }}" class="card-link">View on {{ source | replace('_', ' ') }}</a>
 {%- endfor %}
-      <div id="carousel" class="carousel slide" data-ride="carousel">
+      <div id="carousel" class="carousel slide" data-ride="carousel" {%- if photo | default(False) %}data-interval="false"{% endif %}>
         <div class="carousel-inner">
-  {%- for photo in specy.photos %}
-          <div class="carousel-item {%- if loop.first %} active{% endif %}">
-            <img src="{{ photo['url'] }}" class="card-img-bottom d-block w-100" alt="...">
-            <p>image issue de <a href="{{ specy.link[photo['src']] }}" class="card-link">{{ photo['src'] }}</a></p>
+  {%- for cur_photo in specy.photos %}
+    {%- if ((photo | default(False)) and (cur_photo['url'] == photo['url'])) or (loop.first and not (photo | default(False))) %}
+          <div class="carousel-item active">
+    {%- else %}
+          <div class="carousel-item">
+    {%- endif %}
+            <img src="{{ cur_photo['url'] }}" class="card-img-bottom d-block w-100" alt="...">
+            <p>image issue de <a href="{{ specy.link[cur_photo['src']] }}" class="card-link">{{ cur_photo['src'] }}</a></p>
 {%- if request.authorization and 'username' in request.authorization %}
             <ul class="list-inline">
               <li class="list-inline-item">
@@ -91,11 +97,6 @@
         </a>
       </div>
     </div>
-{%- if photo | default(False) %}
-    <div class="collapse show collapse-info">
-      <img src="{{ photo['url'] }}" class="card-img-bottom d-block w-100" alt="...">
-    </div>
-{%- endif %}
   </div>
 </div>
 {%- endmacro %}
