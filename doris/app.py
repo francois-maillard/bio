@@ -57,7 +57,7 @@ def delete_specy(specy_id: int) -> str:
     if specy_id not in SPECIES:
         abort(404)
     del SPECIES[specy_id]
-    save_species(FILENAME, SPECIES)
+    save_species(FILENAME, SPECIES, TAGS)
     return '', 204
   
 
@@ -82,7 +82,7 @@ def delete_photo(specy_id: int, photo_id: int) -> str:
         abort(404)
 
     del specy.photos[photo_id]
-    save_species(FILENAME, SPECIES)
+    save_species(FILENAME, SPECIES, TAGS)
     return '{}', 201
 
 
@@ -99,7 +99,7 @@ def specy_thumbnail(specy_id: int) -> str:
 
     specy.thumbnail = specy.photos[photo_id]['url']
     specy.image = specy.photos[photo_id]['url']
-    save_species(FILENAME, SPECIES)
+    save_species(FILENAME, SPECIES, TAGS)
     return '{}', 201
 
 
@@ -141,7 +141,7 @@ def create_specy() -> str:
         elif created:
             # Save
             SPECIES[specy.id] = specy
-            save_species(FILENAME, SPECIES)
+            save_species(FILENAME, SPECIES, TAGS)
 
             # Message
             message = {'level': 'success',

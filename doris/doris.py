@@ -33,7 +33,7 @@ class Specy:
     """ Represents a specy """
     # pylint: disable=too-many-arguments
     def __init__(self, specy_id, names, link, image, thumbnail,
-                 taxonomy=None, photos=None):
+                 taxonomy=None, photos=None, tags=None):
         """
         the full taxonomy, ex 
             dpomain Biota
@@ -55,6 +55,9 @@ class Specy:
             taxonomy = []
         self.taxonomy = taxonomy
         self.photos = photos
+        if tags is None:
+            tags = []
+        self.tags = tags
         logging.warning('Loaded %s (%s)', specy_id, self.name)
 
     @property
@@ -255,13 +258,18 @@ class Specy:
                 photos = data['photos']
             else:
                 photos = None
+            if 'tags' in data:
+                tags = data['tags']
+            else:
+                tags = None
             specy = cls(specy_id=data['id'],
                         names=data['names'],
                         link=data['link'],
                         image=data['image'],
                         thumbnail=data['thumbnail'],
                         taxonomy=taxonomy,
-                        photos=photos)
+                        photos=photos,
+                        tags=tags)
 
         if 'name' in data and data['name']:
             specy.name = data['name']

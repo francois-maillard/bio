@@ -62,6 +62,7 @@ SPECIES = {
             ['family', 'Janolidae'],
             ['genus', 'Antiopella']
         ],
+        'tags': ['foo'],
         'photos': [
             {'url': 'https://taxref.mnhn.fr/api/media/download/inpn/219858', 'src': 'inpn'},
             {'url': 'https://taxref.mnhn.fr/api/media/download/inpn/219857', 'src': 'inpn'},
@@ -163,5 +164,11 @@ def test_load_species():
 
 def test_load_species_local():
     (species, tags) = load_species(os.path.join(TEST_ROOT, 'species-all.yaml'), remote_load=False)
-    assert len(species) == 1
+    assert len(species) == 2
     assert species[547264].dump() == SPECIES[547264]
+
+    assert len(tags) == 2
+    assert tags[0] == 'foo'
+
+    assert len(species[66921].tags) == 0
+    assert species[547264].tags == ['foo']
