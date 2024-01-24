@@ -170,49 +170,6 @@ class Specy:
                    taxonomy=taxonomy,
                    photos=photos)
 
-#    @classmethod
-#    def from_inpn(cls, ref):
-#        """ Load from inpn api using their ID """
-#        url = f'https://odata-inpn.mnhn.fr/taxons/{ref}?embed=PHOTOS'
-#        resp = requests.get(url)
-#        resp.raise_for_status()
-#        data = resp.json()
-#        link = {
-#            'inpn_api': url,
-#            'inpn': f'https://inpn.mnhn.fr/espece/cd_nom/{ref}'
-#        }
-#
-#        link_url = f'https://taxref.mnhn.fr/api/taxa/{ref}/externalIds'
-#
-#        resp = requests.get(link_url)
-#        resp.raise_for_status()
-#        link_data = resp.json()
-#        for external in link_data['_embedded']['externalDb']:
-#            if external['externalDbName'] == 'DORIS':
-#                link['doris'] = external['url']
-#
-#        image = None
-#        if 'image' in data['_links']:
-#            image = data['_links']['image']['href']
-#
-#        thumbnail = None
-#        if 'thumbnail' in data['_links']:
-#            thumbnail = data['_links']['thumbnail']['href']
-#
-#        taxonomy_url = data['_links']['taxonomy']['href']
-#        taxonomy_url = taxonomy_url.replace('{', '').replace('}', '')
-#        resp = requests.get(taxonomy_url)
-#        taxonomy = [[taxon['rank'].lower(), name(taxon)]
-#            for taxon in resp.json()['_embedded']['taxa']]
-#
-#        return cls(specy_id=ref,
-#                   names=data['names'], link=link,
-#                   image=image,
-#                   thumbnail=thumbnail,
-#                   taxonomy=taxonomy,
-#                   photos=[{'url': photo['_links']['image']['href'], 'src': 'inpn'}
-#                           for photo in data['_embedded']['photos']])
-
     # pylint: disable=unused-argument
     @classmethod
     def from_name(cls, name):
