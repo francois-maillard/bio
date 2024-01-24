@@ -43,8 +43,8 @@
         {%- if page == "species" %}
         <div class="btn-group btn-group-toggle my-lg-0" data-toggle="buttons">
         {%- for tag in all_tags %}
-          <label class="btn btn-light btn-sm {% if tag in tags %}active{% endif %}">
-            <input type="checkbox" {% if tag in tags %}checked{% endif %}> {{ tag }}
+          <label class="btn btn-light btn-sm btn-tag {% if tag in tags %}active{% endif %}">
+            <input type="checkbox" data-tag-id="{{ tag }}" {% if tag in tags %}checked{% endif %}> {{ tag }}
           </label>
         {%- endfor %}
         </div>
@@ -65,7 +65,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="/static/js/delete.js"></script>
+    <script src="/static/js/bio.js"></script>
 {%- endblock %}
   </body>
 </html>
