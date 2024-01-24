@@ -1,6 +1,7 @@
 # Run the tests
 
 ```bash
+export PYTHONPATH=".:$PYTHONPATH"
 pip install -r requirements.txt
 pytest tests/
 ```

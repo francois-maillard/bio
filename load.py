@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from doris.doris import load_species, save_species, Specy
 
 def update(specy):
@@ -8,17 +9,25 @@ def update(specy):
 
 
 def update_all():
-    species = load_species('/srv/volumes/bio.yaml', remote_load=False)
+    # species = load_species('/srv/volumes/bio.yaml', remote_load=False)
+    (species, tags) = load_species('/home/francois/species2.yaml', remote_load=False)
     for specy in species.values():
         update(specy)
-    save_species('/home/francois/species2.yaml', species)
+    # save_species('/home/francois/species2.yaml', species, [])
 
 
-def load_one():
-    data = {'inpn': 69627}
+def load_one(stdout=True):
+    data = {
+        'name': 'Antiopelle',
+        'inpn': 547264,
+        'doris': 335
+    }
     specy = Specy.from_dict(data, remote_load=True)
-    save_species('/tmp/species.yaml', {specy.id: specy})
+    if (stdout):
+        print(specy.dump())
+    else:
+        save_species('/tmp/species2.yaml', {specy.id: specy}, [])
 
 
 if __name__ == '__main__':
-    update_all()
+    load_one()

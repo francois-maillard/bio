@@ -22,7 +22,7 @@ app = Flask(__name__)
 auth = HTTPBasicAuth()
 
 
-SPECIES = load_species(FILENAME, remote_load=False)
+(SPECIES, TAGS) = load_species(FILENAME, remote_load=False)
 
 
 @auth.verify_password

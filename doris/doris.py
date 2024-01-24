@@ -276,18 +276,22 @@ class Specy:
         return _dict
 
 
-def load_species(filename: str, remote_load=True) -> Dict[int, Specy]:
+def load_species(filename: str, remote_load=True) -> (Dict[int, Specy], List):
     """ Load all species in the configuration file """
     species = {}
+    tags = []
     with open(filename, 'r') as stream:
-        for data in yaml.safe_load(stream):
-            specy = Specy.from_dict(data, remote_load=remote_load)
+        data = yaml.safe_load(stream)
+        for specy_dict in data['species']:
+            specy = Specy.from_dict(specy_dict, remote_load=remote_load)
             species[specy.id] = specy
-    return species
+    return species, data['tags']
 
 
-def save_species(filename: str, data: dict) -> None:
+def save_species(filename: str, species: dict, tags: list) -> None:
     """ Save all species """
     with open(filename, "w") as myfile:
-        for specy in data.values():
-            myfile.write(yaml.safe_dump([specy.dump()]))
+        myfile.write(yaml.safe_dump({
+            'tags': tags,
+            'species': [specy.dump() for specy in species.values()]
+        }))

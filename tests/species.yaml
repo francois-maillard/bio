@@ -1,7 +1,11 @@
+species:
 - inpn: 69760
-- name: Doris Dalmatienne
-  inpn: 63607
-  doris: 169 
+- name: Antiopelle
+  inpn: 547264
+  doris: 335 
 - inpn: 350678
   doris: 333
 - specy: Conger conger
+tags:
+- foo
+- bar
