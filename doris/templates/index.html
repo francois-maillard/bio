@@ -27,7 +27,7 @@
           </li>
           <li class="nav-item">
             {%- if page == "random" %}
-            <a class="nav-link active" href="/species/random" aria-current="page">Hasard <span class="sr-only">(courant)</span></a>
+            <a class="nav-link active" href="/species/random?{% for tag in tags %}tags={{ tag }}&{% endfor %}" aria-current="page">Hasard <span class="sr-only">(courant)</span></a>
             {%- else %}
             <a class="nav-link" href="/species/random">Hasard</a>
             {%- endif %}
@@ -40,7 +40,7 @@
             {%- endif %}
           </li>
         </ul>
-        {%- if page == "species" %}
+        {%- if page in ["species", "random"] %}
         <div class="btn-group btn-group-toggle my-lg-0" data-toggle="buttons">
         {%- for tag in all_tags %}
           <label class="btn btn-light btn-sm btn-tag {% if tag in tags %}active{% endif %}">

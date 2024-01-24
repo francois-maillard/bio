@@ -49,10 +49,10 @@ $('.btn-thumbnail').on('click', function(event) {
 
 $('.btn-tag').on('change', function(event) {
   var input = $(this) // Button that triggered the modal
-  var url = '/species?';
+  var url = location.pathname + '?';
   input.closest('.btn-group').find(':checked').each(function () {
     var tag_input = $(this);
     url = url + 'tags=' + tag_input.attr('data-tag-id') + '&';
   });
-  window.location.replace(url);
+  window.location.href = url;
 })

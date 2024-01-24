@@ -1,6 +1,7 @@
 import logging
 import os
 import random
+from typing import Dict, Tuple, List
 from flask import Flask, render_template, abort, request
 from flask_httpauth import HTTPBasicAuth
 from werkzeug.security import check_password_hash
@@ -31,27 +32,32 @@ def verify_password(username: str, password: str) -> str:
            check_password_hash(PASSWORD, password):
         return username
 
+def filter_species() -> Tuple[Dict, List]:
+    tags = request.args.getlist('tags')
+    if tags is not None and len(tags) != 0:
+        return ({specy.id: specy for specy in SPECIES.values() if set(specy.tags) & set(tags)}, tags)
+    return (SPECIES, tags)
+
 
 @app.route("/")
 @app.route("/species")
 def list_species() -> str:
     """ Species page """
-    tags = request.args.getlist('tags')
-    if tags is not None and len(tags) != 0:
-        species = {specy.id: specy for specy in SPECIES.values() if set(specy.tags) & set(tags)}
-    else:
-        species = SPECIES
+    (species, tags) = filter_species()
     return render_template("species.html.j2", page="species",
                            species=species, tags=tags, all_tags=TAGS)
 
 
 @app.route("/species/random")
 def random_specy() -> str:
-    specy = random.choice(list(SPECIES.values()))
+    (species, tags) = filter_species()
+    specy = random.choice(list(species.values()))
     photo = random.choice(specy.photos)
     return render_template("specy.html.j2", page="random",
                            specy=specy,
                            photo=photo,
+                           tags=tags,
+                           all_tags=TAGS,
                            hidden=True)
 
 
