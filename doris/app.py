@@ -36,8 +36,13 @@ def verify_password(username: str, password: str) -> str:
 @app.route("/species")
 def list_species() -> str:
     """ Species page """
+    tags = request.args.getlist('tags')
+    if tags is not None and len(tags) != 0:
+        species = {specy.id: specy for specy in SPECIES.values() if set(specy.tags) & set(tags)}
+    else:
+        species = SPECIES
     return render_template("species.html.j2", page="species",
-                           species=SPECIES)
+                           species=species)
 
 
 @app.route("/species/random")

@@ -172,3 +172,7 @@ def test_load_species_local():
 
     assert len(species[66921].tags) == 0
     assert species[547264].tags == ['foo']
+
+    filtered = {specy.id: specy for specy in species.values() if set(specy.tags) & set(tags)}
+    assert len(filtered) == 1
+    assert filtered[547264].dump() == SPECIES[547264]
