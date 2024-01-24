@@ -40,6 +40,15 @@
             {%- endif %}
           </li>
         </ul>
+        {%- if page == "species" %}
+        <div class="btn-group btn-group-toggle my-lg-0" data-toggle="buttons">
+        {%- for tag in all_tags %}
+          <label class="btn btn-light btn-sm {% if tag in tags %}active{% endif %}">
+            <input type="checkbox" {% if tag in tags %}checked{% endif %}> {{ tag }}
+          </label>
+        {%- endfor %}
+        </div>
+        {%- endif %}
       </div>
 <!--
       <div class="p-1 mr-3">

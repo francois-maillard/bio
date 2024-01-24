@@ -42,7 +42,7 @@ def list_species() -> str:
     else:
         species = SPECIES
     return render_template("species.html.j2", page="species",
-                           species=species)
+                           species=species, tags=tags, all_tags=TAGS)
 
 
 @app.route("/species/random")
