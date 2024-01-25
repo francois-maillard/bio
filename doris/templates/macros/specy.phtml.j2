@@ -96,6 +96,26 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
+      <div>
+        <form class="form-inline" action="javascript:void(0);">
+        {%- for tag in specy.tags %}
+          <span class="badge badge-primary">{{ tag }}
+            <button class="btn btn-danger btn-sm btn-delete-tag py-0 px-1" type="button" data-toggle="tooltip" data-placement="top"
+                    data-url="/species/{{ specy.id }}/tags/{{ tag }}"
+                    title="Remove the tag">
+              <i class="fa fa-trash"></i>
+            </button>
+          </span>
+        {%- endfor %}
+{%- if request.authorization and 'username' in request.authorization %}
+          <div class="form-group mx-sm-3 mb-2">
+            <label for="add-tag" class="sr-only">Tag to add</label>
+            <input type="text" class="form-control form-control-sm" id="add-tag" placeholder="new-tag">
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm mb-2 btn-add-tag" data-url="/species/{{ specy.id }}/tags">Add tag</button>
+{%- endif %}
+        </form>
+      </div>
     </div>
   </div>
 </div>

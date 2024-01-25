@@ -1,8 +1,10 @@
 import logging
 import os
 import random
+import re
+import json
 from typing import Dict, Tuple, List
-from flask import Flask, render_template, abort, request
+from flask import Flask, render_template, abort, request, Response
 from flask_httpauth import HTTPBasicAuth
 from werkzeug.security import check_password_hash
 from .doris import Specy, load_species, save_species
@@ -38,6 +40,14 @@ def filter_species() -> Tuple[Dict, List]:
     if tags is not None and len(tags) != 0:
         return ({specy.id: specy for specy in SPECIES.values() if set(specy.tags) & set(tags)}, tags)
     return (SPECIES, tags)
+
+
+def slugify(slug: str) -> str:
+  slug = slug.lower().strip()
+  slug = re.sub(r'[^\w\s-]', '', slug)
+  slug = re.sub(r'[\s_-]+', '-', slug)
+  slug = re.sub(r'^-+|-+$', '', slug)
+  return slug
 
 
 @app.route("/")
@@ -117,6 +127,43 @@ def specy_thumbnail(specy_id: int) -> str:
     return '{}', 201
 
 
+@app.route("/species/<specy_id>/tags", methods=['POST'])
+@auth.login_required
+def specy_tag(specy_id: int) -> str:
+    specy_id = int(specy_id)
+    if specy_id not in SPECIES:
+        abort(404)
+    specy = SPECIES[specy_id]
+
+    tag = slugify(request.json.get('tag'))
+    specy.tags.append(tag)
+    if tag not in TAGS:
+        TAGS.append(tag)
+
+    save_species(FILENAME, SPECIES, TAGS)
+    return '{}', 201
+
+
+@app.route("/species/<specy_id>/tags/<tag>", methods=['DELETE'])
+@auth.login_required
+def specy_tag_delete(specy_id: int, tag: str) -> str:
+    specy_id = int(specy_id)
+    if specy_id not in SPECIES:
+        abort(404)
+    specy = SPECIES[specy_id]
+
+    tag = slugify(tag)
+    if tag not in specy.tags:
+        abort(404)
+
+    specy.tags.remove(tag)
+    if not any(tag in cur_specy.tags for cur_specy in SPECIES.values()):
+        TAGS.remove(tag)
+
+    save_species(FILENAME, SPECIES, TAGS)
+    return '', 204
+
+
 @app.route("/species/new")
 @auth.login_required
 def create_specy() -> str:
@@ -173,3 +220,9 @@ def create_specy() -> str:
                            data=data,
                            message=message,
                            page="specy_create")
+
+
+@app.route("/tags", methods=['GET'])
+def tags() -> str:
+    return Response(response=json.dumps(TAGS),
+                    mimetype="application/json")

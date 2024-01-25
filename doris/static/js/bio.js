@@ -56,3 +56,46 @@ $('.btn-tag').on('change', function(event) {
   });
   window.location.href = url;
 })
+
+$('.btn-add-tag').on('click', function(event) {
+  var button = $(this) // Button that triggered the modal
+  var input = $('#add-tag');
+  $.ajax({
+    url: button.data('url'),
+    type: 'POST',
+    dataType: "json",
+    data: JSON.stringify({'tag': $('#add-tag').val()}),
+    contentType: "application/json; charset=utf-8",
+    success: function(result) {
+      window.location.reload();
+    },
+    error: function(result, error, status) {
+      var confirmModal = $('#confirmModal')
+      confirmModal.addClass('alert-danger')
+      confirmModal.find('p').text('Failed: ' + status)
+      confirmModal.addClass('show')
+      confirmModal.alert()
+    }
+  });
+})
+
+$('.btn-delete-tag').on('click', function(event) {
+  var button = $(this) // Button that triggered the modal
+  $.ajax({
+    url: button.data('url'),
+    type: 'DELETE',
+    dataType: "json",
+    contentType: "application/json; charset=utf-8",
+    success: function(result) {
+      window.location.reload();
+    },
+    error: function(result, error, status) {
+      var confirmModal = $('#confirmModal')
+      confirmModal.addClass('alert-danger')
+      confirmModal.find('p').text('Failed: ' + status)
+      confirmModal.addClass('show')
+      confirmModal.alert()
+    }
+  });
+})
+
