@@ -32,6 +32,7 @@ def verify_password(username: str, password: str) -> str:
            check_password_hash(PASSWORD, password):
         return username
 
+
 def filter_species() -> Tuple[Dict, List]:
     tags = request.args.getlist('tags')
     if tags is not None and len(tags) != 0:
@@ -82,6 +83,7 @@ def show_specy(specy_id: int) -> str:
 
 
 @app.route("/species/<specy_id>/photos/<photo_id>", methods=['DELETE'])
+@auth.login_required
 def delete_photo(specy_id: int, photo_id: int) -> str:
     specy_id = int(specy_id)
     if specy_id not in SPECIES:
@@ -94,10 +96,11 @@ def delete_photo(specy_id: int, photo_id: int) -> str:
 
     del specy.photos[photo_id]
     save_species(FILENAME, SPECIES, TAGS)
-    return '{}', 201
+    return '{}', 204
 
 
 @app.route("/species/<specy_id>/thumbnail", methods=['POST'])
+@auth.login_required
 def specy_thumbnail(specy_id: int) -> str:
     specy_id = int(specy_id)
     if specy_id not in SPECIES:
